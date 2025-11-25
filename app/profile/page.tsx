@@ -28,7 +28,10 @@ export default async function ProfilePage() {
                 <div className="profile-grid">
                     <div className="profile-card">
                         <h2>Personal Details</h2>
-                        <form action={updateProfileAction}>
+                        <form action={async (formData) => {
+                            'use server';
+                            await updateProfileAction(formData);
+                        }}>
                             <div className="form-group">
                                 <label htmlFor="name">Full Name</label>
                                 <input
@@ -59,7 +62,10 @@ export default async function ProfilePage() {
 
                     <div className="profile-card">
                         <h2>Change Password</h2>
-                        <form action={changePasswordAction}>
+                        <form action={async (formData) => {
+                            'use server';
+                            await changePasswordAction(formData);
+                        }}>
                             <div className="form-group">
                                 <label htmlFor="currentPassword">Current Password</label>
                                 <input
